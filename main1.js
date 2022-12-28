@@ -1,19 +1,24 @@
-fetch("https://swapi.dev/api/people")
+fetch(`https://swapi.dev/api/people/${id}`)
   .then((response) => {
     return response.json();
   })
   .then((data) => {
     console.log(data);
-    data.forEach((user) => {
-      let html = "";
-      const htmlDisplay = `<div>
-      <h2>${user.name}</h2>
-      <h3>${user.height}</h3>
-      <h3>${user.gender}</h3>
-      </div>`;
-      html += htmlDisplay;
-      let container = document.querySelector("#container");
-      container.innerHTML = html;
-    });
+    const name = data.name;
+    const height = data.height;
+    const gender = data.gender;
+    const html = `
+      <div class = "character">
+        <div class = "name">
+          <h2>${name}</h2>
+        </div>
+        <div class = "other_info">
+          <h3>${name}</h3>
+          <h3>${gender}</h3>
+          <h3>${height}</h3>
+        </div>
+      </div>
+    `;
+    document.querySelector("#container").insertAdjacentHTML("afterbegin", html);
   })
   .catch((error) => console.error("SERVER ERROR", error));

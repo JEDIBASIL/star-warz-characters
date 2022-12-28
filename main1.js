@@ -1,4 +1,4 @@
-const fetchData = () => {
+const fetchData = (id) => {
   fetch(`https://swapi.dev/api/people/${id}`)
     .then((response) => {
       return response.json();
@@ -26,3 +26,7 @@ const fetchData = () => {
     })
     .catch((error) => console.error("SERVER ERROR", error));
 };
+
+for (let i = 1; i < 100; i++) {
+  fetchData(i);
+}

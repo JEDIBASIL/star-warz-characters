@@ -27,6 +27,6 @@ const fetchData = (id) => {
     .catch((error) => console.error("SERVER ERROR", error));
 };
 
-for (let i = 1; i < 100; i++) {
+for (let i = 1; i < 20; i++) {
   fetchData(i);
 }

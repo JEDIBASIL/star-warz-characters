@@ -23,21 +23,21 @@ const cardUILoader = () => {
     }
 };
 
-const cardUI = (name, gender, i) => {
+const cardUI = (name, color, i) => {
     cardContainer.innerHTML += `
         <div class="card" role="${i}">
-            <img src="https://robohash.org/${name}" role="${i}" />
+            <img  style="background-color:#${color} ;" src="https://robohash.org/${name}" role="${i}" />
             <div class="details_container" role="${i}">
               <h3 role="${i}">${name}</h3>
             </div>
         </div>`;
 };
 
-const modalUI = ({ name, height, gender }) => {
+const modalUI = ({ name, height, gender, color="gray" }) => {
     modal.innerHTML = `
     <div class="modal_content">
     <span class="material-symbols-outlined close_icon">close</span>
-    <img src="https://robohash.org/${name}" alt="">
+    <img style="background-color:#${color}" src="https://robohash.org/${name}" alt="">
     <div>
       <div class="details_container"><h4>Name: </h4> ${name}</div>
       <div class="details_container"><h4>Gender: </h4> ${gender}</div>
@@ -62,7 +62,7 @@ const updateSearch = (value = "") => {
     cardContainer.innerHTML = ""
     filteredStarWarzData = starWarzData
         .filter(data => data.name.toLowerCase().includes(value.toLowerCase().trim()))
-    filteredStarWarzData.map(({ name, gender }, i) => cardUI(name, gender, i))
+    filteredStarWarzData.map(({ name, color }, i) => cardUI(name, color, i))
 }
 
 
@@ -81,7 +81,6 @@ const updatePageContent = (resourceLength, pageCount) => {
 }
 
 const disablePaginationNavigationButton = () => {
-    console.log(maxPage)
     paginationIndex == 1 ? paginationPrev.disabled = true : paginationPrev.disabled = false
     paginationIndex == maxPage ? paginationNext.disabled = true : paginationNext.disabled = false
 }
@@ -101,9 +100,14 @@ const fetchData = (pageNumber) => {
             updatePaginationIndicator()
             disablePaginationNavigationButton()
             starWarzData = data.results;
+            starWarzData.map(data =>{
+                var randomColor = Math.floor(Math.random()*16777215).toString(16);
+                data.color = randomColor;
+            })
+            console.log(starWarzData)
             updateSearch("")
             cardContainer.innerHTML = ""
-            filteredStarWarzData.map(({ name, gender }, i) => cardUI(name, gender, i))
+            filteredStarWarzData.map(({ name, color }, i) => cardUI(name, color, i))
         }).catch(() => {
             messageUI("wifi_off","An error occurred")
             disablePaginationNavigationButton()
@@ -122,9 +126,11 @@ fetchData(paginationIndex);
 console.log(cardContainer)
 cardContainer.addEventListener("click", (e) => {
     const characterIndex = e.target.role;
-    if (!isNaN(characterIndex)) modal.style.display = "flex"
-    const character = filteredStarWarzData[characterIndex];
-    modalUI({ ...character })
+    if (!isNaN(characterIndex) && characterIndex !== null){ 
+        modal.style.display = "flex"
+        const character = filteredStarWarzData[characterIndex];
+        modalUI({ ...character })
+    }
 })
 
 paginationContent.addEventListener("click", (e) => {

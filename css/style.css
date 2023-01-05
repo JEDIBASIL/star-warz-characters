@@ -19,7 +19,7 @@
 body{
     width: 100%;
     height: 100%;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 nav {
@@ -40,43 +40,12 @@ nav .logo h1 {
   font-family: 'Poller One', cursive;
   padding: 20px;
   font-weight: 900;
-  color: transparent;
-  background:linear-gradient(45deg, slateblue, skyblue);
+  color: black;
   -webkit-background-clip: text;
 }
 
 nav .logo span {
   font-size: 50px;
-}
-
-nav .blur_container {
-  position: absolute;
-  top: -150px;
-  display: flex;
-  gap: 20px;
-  filter: blur(50px);
-  z-index: -1;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-nav .blur_container div {
-    max-width: 250px;
-    width: 50%;
-    height: 250px;
-    border-radius: 50%;
-    filter: blur(70px);
-    display: none;
-}
-
-nav .blur_container div:nth-child(1){
-    background-color: rgb(21, 189, 255);
-}
-
-nav .blur_container div:nth-child(2){
-    background-color: rgb(255, 61, 100);
 }
 .search_box_container{
     width: 100%;
@@ -89,7 +58,6 @@ nav .blur_container div:nth-child(2){
     position: sticky;
     top: 20px;
     padding: 0px 30px;
-    /* position: relative; */
 }
 
 .search_box_container .search_box{
@@ -99,7 +67,7 @@ nav .blur_container div:nth-child(2){
     max-width: 500px;
     background-color: white;
     box-shadow: 0px 0px 10px rgba(1, 1, 1, 0.146);
-    border-radius: 8px;
+    border-radius: 50px;
     padding:0px 10px;
     height: 55px;
     
@@ -132,29 +100,29 @@ nav .blur_container div:nth-child(2){
     padding-bottom: 20px;
     padding: 0px 30px;
     min-height: calc(100vh - 250px);
-    overflow: hidden;
 }
 
 .card_container .card{
     height: 100%;
     border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0px 0px 3px rgba(1, 1, 1, 0.146);
+    box-shadow: 0px 0px 10px rgba(1, 1, 1, 0.113);
     background-color: white;
     max-height: 250px;
     text-align: center;
 }
 
 .card_container .card img{
-    border-radius: 10px;
+    margin-bottom: 10px;
     width: 100%;
     height: 170px;
     object-fit: contain;
-    margin-bottom: 10px;
+    border-radius: 10px 10px 0px 0px;
+    background-blend-mode: darken;
+    background-color: gray;
 }
 
 .card_container .card h3{
-    margin-top: 10px;
+    margin: 10px 0px;
     font-size: 18px;
 }
 
@@ -164,7 +132,7 @@ nav .blur_container div:nth-child(2){
 }
 
 .card_container .loader_card .image{
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 10px;
     width: 100%;
     height: 140px;
@@ -179,7 +147,7 @@ nav .blur_container div:nth-child(2){
     position: absolute;
     height: 100%;
     width: 100%;
-    background: linear-gradient(90deg,white, rgb(237, 237, 237));
+    background: linear-gradient(90deg,rgb(237, 237, 237), rgb(237, 237, 237));
     filter: blur(1px);
     animation: loader_animate 1.4s linear infinite;
 }
@@ -199,7 +167,7 @@ nav .blur_container div:nth-child(2){
 .card_container .loader_card .details_container .title{
     width: 50%;
     height: 30px;
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 5px;
     position: relative;
     overflow: hidden;
@@ -236,13 +204,29 @@ nav .blur_container div:nth-child(2){
     max-width: 500px;
     background-color: white;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
 }
 
 .modal .modal_content img{
     margin-bottom: 20px;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 10px;
 }
 .modal .modal_content span{
     position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.205);
 }
 .modal .modal_content .details_container{
     display: flex;
@@ -282,18 +266,23 @@ nav .blur_container div:nth-child(2){
 }
 
 .pagination_container .active{
-    background-color: royalblue;
+    background-color: royalblue !important;
     color: white;
 }
 
 .pagination_content{
     display: flex;
     align-items: center;
+    gap: 3px;
 }
 
 
 .dark{
     background-color: black;
+    color: white;
+}
+
+.dark nav .logo h1{
     color: white;
 }
 
@@ -332,6 +321,11 @@ nav .blur_container div:nth-child(2){
 .dark .card_container .loader_card .details_container .title::before,
 .dark .card_container .loader_card .details_container .text::before{
     background: linear-gradient(90deg,rgb(49, 49, 49), black);
+}
+
+.dark .pagination_container button{
+    background-color: rgb(49, 49, 49);
+    border: 1px solid rgb(80, 80, 80);
 }
 
 .error_container{

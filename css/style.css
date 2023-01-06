@@ -88,6 +88,10 @@ nav .logo span {
     margin-left: 10px;
 }
 
+.search_box_container .search_box input:disabled{
+    cursor: not-allowed;
+}
+
 .card_container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -138,6 +142,16 @@ nav .logo span {
     height: 140px;
     position: relative;
     overflow: hidden;
+}
+.reload_btn{
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    font-size: 14px;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .card_container .loader_card .image::before, 
@@ -215,6 +229,7 @@ nav .logo span {
     height: 300px;
     object-fit: contain;
     border-radius: 10px;
+    background-color: gray;
 }
 .modal .modal_content span{
     position: absolute;
@@ -344,7 +359,11 @@ nav .logo span {
 }
 
 .error_container span{
-    font-size: 50px;
+    font-size: 34px;
+}
+
+.error_container h2{
+    font-size: 16px;
 }
 
 @media screen and (max-width:991px) {

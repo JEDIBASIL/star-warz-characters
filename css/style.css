@@ -260,6 +260,7 @@ nav .logo span {
     padding: 10px 30px;
     margin-bottom: 20px;
     gap: 5px;
+    overflow: hidden;
 }
 
 .pagination_container button{
